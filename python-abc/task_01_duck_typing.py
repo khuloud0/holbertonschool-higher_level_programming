@@ -1,5 +1,7 @@
+#!/usr/bin/python3
 from abc import ABC, abstractmethod
-import math
+from math import pi
+
 
 class Shape(ABC):
     @abstractmethod
@@ -10,27 +12,30 @@ class Shape(ABC):
     def perimeter(self):
         pass
 
+
 class Circle(Shape):
     def __init__(self, radius):
-        self.radius = radius
+        self.__radius = radius
 
     def area(self):
-        return math.pi * self.radius ** 2
+        return self.__radius**2 * pi
 
     def perimeter(self):
-        return 2 * math.pi * self.radius
+        return abs(self.__radius * 2 * pi)
+
 
 class Rectangle(Shape):
     def __init__(self, width, height):
-        self.width = width
-        self.height = height
+        self.__width = width
+        self.__height = height
 
     def area(self):
-        return self.width * self.height
+        return self.__width * self.__height
 
     def perimeter(self):
-        return 2 * (self.width + self.height)
+        return abs((self.__width + self.__height) * 2)
 
-def shape_info(shape):
-    print(f"Area: {shape.area()}")
-    print(f"Perimeter: {shape.perimeter()}")
+
+def shape_info(any_shape):
+    print(f"Area: {any_shape.area()}")
+    print(f"Perimeter: {any_shape.perimeter()}")
